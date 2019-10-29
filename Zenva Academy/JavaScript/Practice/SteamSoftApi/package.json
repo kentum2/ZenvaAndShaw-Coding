@@ -1,0 +1,15 @@
+{
+  "name": "steamsoftapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "modernJavascript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node modernJavascript.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}

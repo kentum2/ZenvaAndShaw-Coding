@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Blog Site</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  </head>
+  <style type="text/css">
+    html,body {
+      padding:10px;
+      clear:both;
+      float:left;
+      background-color: #937E7A
+    }
+    #singleBlogPost {
+      padding: 10px;
+      margin-bottom:50px;
+      border-width: 2px;
+      border-style: solid;
+      border-color: #B93519  ;
+    }
+    #blogPostCreation{
+      border-width: 2px;
+      border-style: solid;
+      border-color: black;
+
+    }
+    #blogPostCreation > * {
+      margin: 10px;
+    }
+  </style>
+  </head>
+  <body>
+    <h1>Welcome to my Blog Site!</h1>
+
+    <div id="blogPosts">
+      <blog-post
+      v-for='post in posts'
+      v-bind:blogpost='post'
+      ></blog-posts>
+    </div>
+
+  <div id="blogPostCreation">
+    <h2>Make new blog post</h2>
+    <input v-model='title'>Title<br>
+    <input v-model='username'>Username<br>
+    <input v-model='date'>Date<br>
+    <input v-model='content'>Content<br>
+    <button v-on:click='publishPost'>Publish post</button>
+  </div>
+
+    <script>
+    Vue.component('blog-post',{
+      props: ['blogpost'],
+      template: `<div id="singleBlogPost">
+        <h2>{{blogpost.title}}</h2>
+        <h3>{{blogpost.username}}</h3>
+        <h4>{{blogpost.date}}</h4>
+        <p>{{blogpost.content}}</p>
+      </div>`,
+    })
+
+      var blogVue = new Vue ({
+        el: '#blogPosts',
+        data: {
+          posts: [
+            {title:'First Post', username: 'Kenneth', date: '17.09.2019', content: 'This is the content of my very first interesting post.'},
+            {title:'Second Post', username: 'Saiake', date: '17.September.2019', content: 'This is the content of my very second interesting post.'},
+          ]
+        }
+      })
+
+        var postBlogVue = new Vue ({
+          el: '#blogPostCreation',
+          data:{
+            title:'',
+            username:'',
+            date:'',
+            content:''
+          },
+          methods:{
+            publishPost: function(){
+              var newPost = {
+                title: this.title,
+                username: this.username,
+                date: this.date,
+                content: this.content
+              }
+              blogVue.posts.push(newPost)
+              this.title = '',
+              this.username = '',
+              this.date = '',
+              this.content = ''
+            }
+          }
+        })
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Canvas fundamentals</title>
+  </head>
+  <body>
+    <canvas id="MyCanvas" width="800" height="800" style="border:2px solid black"></canvas>
+    <script type="text/javascript">
+      var canvas = document.getElementById('MyCanvas');
+      var ctx = canvas.getContext('2d');
+      ctx.fillStyle = "#b6cacf";
+      ctx.strokeStyle = "#4b76d1"
+      ctx.font = '24px arial';
+      ctx.lineWidth = 12;
+      ctx.lineJoin = 'bevel'
+      ctx.shadowColor='black';
+      ctx.shadowBlur='10';
+
+      requestAnimationFrame(draw);
+      function draw(){
+
+        ctx.beginPath();
+        ctx.rect(10,10,250,200);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(300,50);
+        ctx.lineTo(400,50);
+        ctx.lineTo(300,100);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.save();
+        ctx.fillStyle="#7ed67e";
+        ctx.arc(150,325,90,0, 2*Math.PI);
+        ctx.fill();
+        ctx.restore();
+
+
+        requestAnimationFrame(draw);
+      }
+    </script>
+  </body>
+</html>

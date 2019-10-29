@@ -1,0 +1,15 @@
+body {
+  font-size: 16px;
+}
+
+p {
+  font-size: 2.5rem;
+  font-family: 'Roboto Slab', serif;
+
+}
+
+.keypoint {
+  font-style: italic;
+  font-weight: bold;
+  text-decoration: underline;
+}
